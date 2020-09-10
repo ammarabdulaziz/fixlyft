@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.urls import reverse
 from fixlyft_project.utils import unique_slug_generator
 from django.db.models.signals import pre_save
-from PIL import Image
+#from PIL import Image
 from django.core.validators import MinValueValidator, MaxValueValidator
 from fixlyft_project.utils import IntegerRangeField
 # Create your models here.
@@ -41,13 +41,13 @@ class MobileShop(models.Model):
     def get_absolute_url(self):
         return reverse('schedule', kwargs={'pk': self.pk})
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        img = Image.open(self.shop_img.path)
-        if img.height > 90 or img.width > 90:
-            output_size = (90, 90)
-            img.thumbnail = (output_size)
-            img.save(self.shop_img.path)
+#    def save(self, *args, **kwargs):
+#        super().save(*args, **kwargs)
+ #       img = Image.open(self.shop_img.path)
+ #       if img.height > 90 or img.width > 90:
+  #          output_size = (90, 90)
+  #          img.thumbnail = (output_size)
+  #          img.save(self.shop_img.path)
 
     @property
     def ImageUrl(self):
@@ -98,13 +98,13 @@ class OfferImages(models.Model):
         ordering = ['-date_added']
 
     
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        img = Image.open(self.offer_img.path)
-        if img.height > 660 or img.width > 300:
-            output_size = (660, 300)
-            img.thumbnail = (output_size)
-            img.save(self.offer_img.path)
+#    def save(self, *args, **kwargs):
+ #       super().save(*args, **kwargs)
+#        img = Image.open(self.offer_img.path)
+#        if img.height > 660 or img.width > 300:
+#            output_size = (660, 300)
+#            img.thumbnail = (output_size)
+  #          img.save(self.offer_img.path)
 
     @property
     def ImageUrl(self):
