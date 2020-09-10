@@ -57,6 +57,7 @@ def phone_validation(request):
                     
 
                     if data["Status"] == "Success":
+                        conn.close()
                         old.otp_session_id = data["Details"]
                         old.timestamp = str(timezone.now)
                         old.save()
@@ -91,6 +92,7 @@ def phone_validation(request):
                     
 
                     if data["Status"] == "Success":
+                        conn.close()
                         # old.otp_session_id = data["Details"]
                         for i in old:
                             i.otp_session_id = data["Details"]
