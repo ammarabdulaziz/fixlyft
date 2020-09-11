@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from staffs.views import all_pickups, UpdatePickup
 from django.contrib.auth import views as auth_views
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('fixlyftadminff/', admin.site.urls),
     path('', include('fixlyft.urls')),
     path('allpickups/', all_pickups, name='allpickups'),
     path('password-reset/', auth_views.PasswordResetView.as_view(template_name='staffs/password_reset.html'), name='password_reset'),
