@@ -23,15 +23,8 @@ urlpatterns = [
     path('fixlyftadminff/', admin.site.urls),
     path('', include('fixlyft.urls')),
     path('allpickups/', all_pickups, name='allpickups'),
-    path('password-reset/', auth_views.PasswordResetView.as_view(template_name='staffs/password_reset.html'), name='password_reset'),
-    path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='staffs/password_reset_done.html'),
-         name='password_reset_done'),
-    path('password-reset-confirm/<uidb64>/<token>/',
-         auth_views.PasswordResetConfirmView.as_view(template_name='staffs/password_reset_confirm.html'),
-         name='password_reset_confirm'),
     path('<int:pk>/update/', UpdatePickup.as_view(), name='update'),
     path('stafflogout/', auth_views.LogoutView.as_view(template_name='staffs/logout.html'), name='logout'),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
